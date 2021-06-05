@@ -32,9 +32,14 @@ class Api::PointsController < ApplicationController
         #adds points for payee
         temp = Point.all 
         owner_points = temp.where(owner_id_params: owner_id).all
-        total_points = owner_points.sum { |total| total[:points_available] }
+    
         if owner_points
+            total_points = 0
             sorted_points = owner_points.sort_by(:created_at) #turns into array here
+            owner_points.each do |total|
+            total_points += total[:points_available]
+            end 
+
             if spend_params[:spend_amount] > total_points
                 render ["You don't have enough points"]
             else
