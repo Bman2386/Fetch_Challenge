@@ -1,0 +1,1 @@
+json.extract! point, :id, :points_available, :owner_id, :created_at, :payer, :payer_id
