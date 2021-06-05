@@ -55,7 +55,7 @@ In your web browser, go to [http://localhost:3000/](http://localhost:3000/)
 
 - The challenge was to build a simple backend, why make a frontend as well?
 
-The language of the pdf included a statement to assume the engineer has never executed an application in your language before. Having a frontend that accessed the backend and shows it to the user, would be the simplist way in my opinion
+The language of the pdf included a statement to assume the engineer has never executed an application in your language before. Having a frontend that accessed the backend and shows it to the user, would be the simplist way in my opinion. Also, this demonstrates that I do have the ability to work with JavaScript, React, etc. (Which was listed as a bonus in the job posting)
 
 - Why use Ruby/Rails?
 
@@ -71,8 +71,8 @@ Having a system that can save data makes it easier to check and compare results 
 
 - Why add a user and login?
 
-It was mentioned that your servers have users with data, doing this demonstrates that I have knowledge about how a system like this works and will be able to work with it if necessary.
+It was mentioned that your servers have users with data, doing this demonstrates that I have knowledge about how a system like this works and will be able to work with it if necessary. Also, my system design included users, so it makes sense to me that that there would be a login
 
 - Aren't I just creating extra work for myself?
 
-Yes. I am creating extra work for myself, but I wanted to go the extra mile here to show that I can be an asset to Fectch Rewards and put my best foot forward. The downside is that it took more elbow grease, and couldn't be completed in a few hours, but there were no time constrains given for this project and I would really like to be a part of the team
+Yes. I am creating extra work for myself, but I wanted to go the extra mile here to show that I can be an asset to Fetch Rewards and put my best foot forward. The downside is that it took more elbow grease, and couldn't be completed in a few hours, but there were no time constrains given for this project and I would really like to be a part of the team
