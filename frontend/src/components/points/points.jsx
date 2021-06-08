@@ -74,10 +74,10 @@ export default (props) => {
         if (points) {
            const pointToDisplay = points.map(point => 
                 
-                   <div key={point.id} className='points'>
+                   <li key={point.id} className='points'>
                        ${point.points_available}, {point.payer}, {point.created_at}
                        <button onClick={() =>removePoint(point.id)}>delete</button>
-                    </div>
+                    </li>
                
                 )
                 return pointToDisplay
@@ -107,7 +107,7 @@ export default (props) => {
     return (
         <div>
             <button onClick={logout}>logout</button>
-            <div>Points Page</div>
+            <h1>Points Page</h1>
             <p>To collect points click on a payer</p>
             <div className='shops'>
                 <label>Set date(defaults to current time)</label>
@@ -131,15 +131,21 @@ export default (props) => {
                {shops ? display() : <div></div>} 
             </div>
             <div className='paymentbox'>
-                <p>Make a payment</p>
+                <p>Make a payment </p>
             <input 
             type="text"
             className='payment'
             value={payment}
             onChange={e => setPayment(e.target.value)} />
-            <button onClick={makePayment}>Submit Payment</button> 
-             {pointDisplay()}
+            <button 
+            className='pay-btn'
+            onClick={makePayment}>Submit Payment</button> 
+            
             </div>
+            <ul>
+                {pointDisplay()}
+            </ul>
+             
         </div>
     )
 }

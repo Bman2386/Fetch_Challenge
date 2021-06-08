@@ -54,6 +54,7 @@
      border: 1px solid black;
      border-radius: 2px;
      text-align: center;
+     padding: .2rem;
  }
  .shops {
      display: flex;
@@ -66,6 +67,7 @@
      height: 1rem;
      justify-self: center;
      align-self: center;
+     margin-left: 1rem;
  }
 .date{
     width: 15rem;
@@ -77,6 +79,7 @@
     flex-direction: row;
     justify-self: center;
     border: 1px solid black;
+    border-radius: 2px;
     width: 30rem;
 }
 
@@ -86,6 +89,21 @@ label {
 
 .paymentbox{
     display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.pay-btn {
+    margin-left: 1rem;
+    height: 1.3rem;
+    align-self: center;
+}
+
+ul {
+    width: 100%;
+    margin-left: 5rem;
+}
+
+h1{
+    font-size: 2rem;
 }
