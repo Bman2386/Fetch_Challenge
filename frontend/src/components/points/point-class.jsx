@@ -10,8 +10,12 @@ class PointClass extends React.Component {
         this.props.fetchShops()
         this.props.fetchPoints(this.props.ownerId)
     }
+
+    // componentDidUpdate(){
+    //     this.props.fetchPoints(this.props.ownerId)
+    // }
     render(){
-        const {logout, shops, points, createPoint, updatePoints, fetchPoints} =this.props
+        const {logout, shops, points, createPoint, updatePoints, fetchPoints, deletePoint, ownerId} =this.props
         return (
              <Points 
              shops = {shops}
@@ -19,7 +23,9 @@ class PointClass extends React.Component {
              points = {points}
              createPoint = {createPoint}
              updatePoints = {updatePoints}
-             fetchPoints = {fetchPoints}/>
+             fetchPoints = {fetchPoints}
+             deletePoint = {deletePoint}
+             currentId ={ownerId}/>
         )
        
     }

@@ -2,12 +2,14 @@ import {
     getShops,
     getPoints,
     createPoints,
-    updatePoint
+    updatePoint,
+    destroyPoint
 } from '../utils/other'
 
 export const GET_SHOPS = 'GET_SHOPS'
 export const GET_POINTS = 'GET_POINTS'
 export const GET_POINT = 'GET_POINT'
+export const DELETE_POINT = 'DELETE_POINT'
 
 
 
@@ -27,7 +29,9 @@ export const receivePoint = point => ({
     type: GET_POINT,
     point
 })
-
+export const deletePoints = () => ({
+    type: DELETE_POINT
+})
 export const fetchPoints = ownerId => dispatch => {
     return (
         getPoints(ownerId)
@@ -45,7 +49,14 @@ export const createPoint = point => dispatch => {
 export const updatePoints = points => dispatch => {
     return (
         updatePoint(points)
-        .then(points => dispatch(receivePoints(points)))
+        .then(point => dispatch(receivePoint(point)))
+    )
+}
+
+export const deletePoint = pointId => dispatch => {
+    return (
+        destroyPoint(pointId)
+        .then(() => dispatch(deletePoints()))
     )
 }
 export const fetchShops = () => dispatch => {

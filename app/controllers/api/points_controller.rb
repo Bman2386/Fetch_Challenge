@@ -89,7 +89,8 @@ class Api::PointsController < ApplicationController
             :owner_id,
             :payer,
             :payer_id,
-            :spend_amount
+            :spend_amount,
+            :created_at
         )
     end
 

@@ -1,4 +1,4 @@
-import {GET_POINTS, GET_POINT } from '../actions/other'
+import {GET_POINTS, GET_POINT, DELETE_POINT } from '../actions/other'
 
 const PointReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -10,7 +10,9 @@ const PointReducer = (state = {}, action) => {
           })  
          return points 
          case GET_POINT:
-             return Object.assign({}, action.point)  
+             return Object.assign({}, action.point) 
+        case DELETE_POINT:
+            return state 
         default:
         return state
     }

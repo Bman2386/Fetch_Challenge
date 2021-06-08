@@ -13,7 +13,19 @@
  *= require_tree .
  *= require_self
  */
-
+ html, body, div, span, h1, h2, h3, 
+ header, footer, nav, ul, li, button, img, input, a {
+     padding: 0;
+     margin: 0;
+     font-family: inherit;
+     border: 0;
+     background-color: white;
+     font-size: medium;
+     font-family: Arial, sans-serif;
+     font-weight: 300;
+     list-style: none;
+     text-decoration: none;
+ }
  div {
      display: flex;
      text-align: center;
@@ -25,8 +37,24 @@
 
  button {
      width:fit-content;
+     color: white;
+     background-color: grey;
+     border: 1px solid black;
+     border-radius: 2px;
+     margin-left: .5rem;
+     margin-right: .5rem;
+     margin-bottom: .1rem;
+     padding: .1rem;
  }
 
+ button:hover{
+     color: black;
+ }
+ input{
+     border: 1px solid black;
+     border-radius: 2px;
+     text-align: center;
+ }
  .shops {
      display: flex;
      flex-direction: row;
@@ -34,7 +62,26 @@
  }
 
  .payment {
-     width: 10rem;
+     width: 11rem;
+     height: 1rem;
      justify-self: center;
+     align-self: center;
  }
 
+.points {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    border: 1px solid black;
+    width: 30rem;
+}
+
+label {
+    margin: 1rem;
+}
+
+.paymentbox{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}

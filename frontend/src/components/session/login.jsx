@@ -11,11 +11,12 @@ const Login = (props) =>{
  
         e.preventDefault();
         const form = {username: username, password: password}
-       if (login(form)) {
-         
-       }
+        login(form)
     }
-    
+    const guestLogin = () => {
+        const form = {username: 'Guest', password: 'hunter12'}
+        login(form)
+    }
     return (
         <div>
             Login page
@@ -32,6 +33,7 @@ const Login = (props) =>{
                 onChange={e => setPassword(e.target.value)} />
                 <button onClick={handleSubmit}>Login</button>
             </form>
+            <button onClick={guestLogin}>Guest Login</button>
         </div>
     )
 }

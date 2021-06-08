@@ -9,7 +9,6 @@ export const getShops = () => {
 }
 
 export const getPoints = (owner_id) => {
-    debugger
     return $.ajax({
         url: 'api/points',
         method: "GET",
@@ -33,5 +32,14 @@ export const updatePoint = points => {
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         method: 'PATCH',
         data: {points}
+    })
+}
+
+export const destroyPoint = pointId => {
+    return $.ajax({
+        url: `api/points/${pointId}`,
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        method: 'DELETE'
+
     })
 }

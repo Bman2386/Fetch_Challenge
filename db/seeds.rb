@@ -12,7 +12,6 @@ Shop.delete_all
 guest = User.create({
     username: 'Guest',
     password: 'hunter12',
-    points_total: 0
 })
 
 amex = Shop.create({
