@@ -3,8 +3,11 @@
   <head>
     <title>FetchChallenge</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+     <%= csp_meta_tag %>
+    <meta property="og:title" content="Fetch Challenge" />
+    <meta property="og:url"
+       content="https://fetch-challenge.com/#/"
+     />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% if logged_in? %>
@@ -14,8 +17,10 @@
         "username": "<%= current_user.username %>"
       }
       </script>
-     
+    
+    
     <% end %>
+    
   </head>
 
   <body>

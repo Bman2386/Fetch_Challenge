@@ -2,7 +2,8 @@ class Api::PointsController < ApplicationController
 
     def index
         temp = Point.all 
-        @points = temp.where(owner_id_params: owner_id).all
+        @points = temp.where(owner_id: c_id).all
+        # @points = Point.all
         render :index
     end
 
@@ -27,41 +28,49 @@ class Api::PointsController < ApplicationController
     def update
         #needs to find points associated with user, and organize by oldest 1st
         #subtract spent points from totals
-        #delete points if reaches 0
+        #delete points that reaches 0
         #cannot let points go negative
-        #adds points for payee
         temp = Point.all 
-        owner_points = temp.where(owner_id_params: owner_id).all
-    
-        if owner_points
-            total_points = 0
-            sorted_points = owner_points.sort_by(:created_at) #turns into array here
-            owner_points.each do |total|
-            total_points += total[:points_available]
-            end 
+        owner_points = temp.where(owner_id: params[:points][:owner_id])
 
-            if spend_params[:spend_amount] > total_points
-                render ["You don't have enough points"]
-            else
-                i = 0
-                #add spend amount to shop
-                until spend_params[:spend_amount] == 0
-                    if spend_params[:spend_amount] > sorted_points[i][:points_available]
-                        spend_params[:spend_amount] -= sorted_points[i][:points_available]
-                        sorted_points[i].destroy
-                        i++
-                    elsif spend_params[:spend_amount] == sorted_points[i][:points_available]
-                        sorted_points[i].destroy
-                        spend_params[:spend_amount] = 0
-                    else
-                        sorted_points[i].update_attributes(sorted_points[i][:points_available] -= spend_params[:spend_amount])
-                        spend_params[:spend_amount] = 0
-                    end
-                end
-            end
-        else
-           render ["You're out of points"] 
+
+
+        if !owner_points 
+            render ["You're out of points"] 
+            return
         end
+        
+        total_points = 0
+        sorted_points = owner_points.sort_by(&:created_at) #{ |created_at, time| time} #turns into array here
+        owner_points.each { |total| total_points += total[:points_available] }
+        spend = params[:points][:spend_amount].to_i
+        if spend > total_points
+                render ["You don't have enough points"]
+                return
+        end
+            
+        i = 0
+        until spend == 0 
+            if spend > sorted_points[i][:points_available]
+                        spend -= sorted_points[i][:points_available]
+                        sorted_points[i].update_attributes(points_available: 0)
+                        sorted_points[i].save
+                        
+            end
+            if spend == sorted_points[i][:points_available]
+                sorted_points[i].update_attributes(points_available: 0)
+                sorted_points[i].save
+                        spend = 0
+            end
+            if spend < sorted_points[i][:points_available]
+                        temp_points = sorted_points[i][:points_available] -= spend
+                        sorted_points[i].update_attributes(points_available: temp_points)
+                        sorted_points[i].save
+                        spend = 0
+            end
+            i += 1
+        end
+        render :index
     end
 
     def destroy
@@ -71,7 +80,7 @@ class Api::PointsController < ApplicationController
         else
           render ['Could not find those points']
         end
-      end
+    end
 
     private
     def point_params
@@ -79,15 +88,12 @@ class Api::PointsController < ApplicationController
             :points_available,
             :owner_id,
             :payer,
-            :payer_id
+            :payer_id,
+            :spend_amount
         )
     end
 
-    def owner_id_params
+    def c_id
         params[:owner_id]
-    end
-
-    def spend_params
-        params[:spend_amount]
     end
 end

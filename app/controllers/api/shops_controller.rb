@@ -23,8 +23,7 @@ class Api::ShopsController < ApplicationController
     private
     def shop_params
         params.require(:shop).permit(
-            :shop_name,
-            :shop_points
+            :shop_name
         )
     end
 end
