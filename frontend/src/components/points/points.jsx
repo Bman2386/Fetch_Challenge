@@ -13,7 +13,7 @@ export default (props) => {
 
     useEffect(()=> {
         if (refresh > 0) {
-            const ownerId = window.currentUser.id
+            
            async function pointRefresh() {
                const status = await fetchPoints(currentId)
               return status
@@ -36,7 +36,7 @@ export default (props) => {
     }
 
     const pointCreator = (shopName, shopId) => {
-        const ownerId = window.currentUser.id
+    
         let addTotal 
         if (amount === 0){
              addTotal = Math.floor(Math.random() * 10000)
@@ -47,7 +47,7 @@ export default (props) => {
 
         const pointForm = {
             points_available: addTotal,
-            owner_id: ownerId,
+            owner_id: currentId,
             payer: shopName,
             payer_id: shopId
         }
@@ -113,7 +113,7 @@ export default (props) => {
                 <label>Set date(defaults to current time)</label>
                <input 
             type="text"
-            className='payment'
+            className='date'
             placeholder='yyyy-mm-ddThh:mm:ss:ssZ'
             value={date}
             onChange={e => setDate(e.target.value)} />

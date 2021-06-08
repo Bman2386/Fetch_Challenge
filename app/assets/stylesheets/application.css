@@ -67,7 +67,11 @@
      justify-self: center;
      align-self: center;
  }
-
+.date{
+    width: 15rem;
+    height: 1rem;
+    align-self: center;
+}
 .points {
     display: flex;
     flex-direction: row;

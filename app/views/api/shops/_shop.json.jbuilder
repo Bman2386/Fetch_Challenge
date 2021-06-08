@@ -1,1 +1,1 @@
-json.extract! shop, :id, :shop_name, :shop_points
+json.extract! shop, :id, :shop_name

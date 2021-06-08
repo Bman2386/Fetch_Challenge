@@ -1,1 +1,1 @@
-json.extract! user, :id, :username, :points_total
+json.extract! user, :id, :username
